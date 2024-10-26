@@ -30,7 +30,7 @@ def mostrarSeleccion(dispensador1, dispensador2):
     print("Para elegir un producto, ingrese:")
     print(f"G para Galletas (Disponibles: {dispensador1.getNroProductos()}, Costo: {dispensador1.getCosto()})")
     print(f"C para Chocolates (Disponibles: {dispensador2.getNroProductos()}, Costo: {dispensador2.getCosto()})")
-    print("X para salir")
+    print("-1 para salir")
 
 
 
@@ -54,6 +54,8 @@ def pruebaDispensador():
             monto = float(input("Ingrese dinero (acepta monedas de 5c, 10c, 25c): "))
             if monto in [5, 10, 25]:
                 montoIngresado += monto
+            elif monto == -1:
+                return
             else:
                 print("Ingrese una moneda válida.")
                 
@@ -63,7 +65,8 @@ def pruebaDispensador():
             
         while True:
             seleccion = input("Ingrese el producto, por favor(G o C): ")
-            if seleccion in ['G', 'C']:
+            seleccion = seleccion.upper()
+            if seleccion.upper() in ['G', 'C']:
                 break
             else:
                 print("Ingrese un producto válido: ")
